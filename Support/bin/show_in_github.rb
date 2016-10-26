@@ -6,8 +6,16 @@ require "show_in_github"
 
 begin
   url = ShowInGitHub.url_for(ENV['TM_FILEPATH'])
-  lines = ENV['TM_INPUT_START_LINE'] ? "#{ENV['TM_INPUT_START_LINE']}-#{ENV['TM_LINE_NUMBER']}" : ENV['TM_LINE_NUMBER']
-  `open #{url}#L#{lines}`
+  if ENV['TM_LINE_NUMBER']
+    lines = "L#{ENV['TM_LINE_NUMBER']}"
+  else
+    lines = ENV['TM_SELECTION'].split('-')
+                               .collect{ |line| line[/[^:]+/].to_i }
+                               .sort
+                               .collect{ |line| "L#{line}"}
+                               .join('-')
+  end
+  `open #{url}##{lines}`
 rescue NotGitRepositoryError
   puts "File/project not a git repository"
 rescue NotGitHubRepositoryError
