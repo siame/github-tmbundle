@@ -52,9 +52,9 @@ class GitManager
     if user_project = user_project_from_repo(repo)
       url_head(user_project)
     end
-  end  
-  
-  def file_to_github_url(github_remote, branch='master', file=nil)
+  end
+
+  def file_to_github_url(github_remote, branch=nil, file=nil)
     file ||= target_file
     branch ||= @git.current_branch
     repo = repo_for_remote(github_remote)
