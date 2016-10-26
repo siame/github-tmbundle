@@ -15,7 +15,13 @@ begin
                                .collect{ |line| "L#{line}"}
                                .join('-')
   end
-  `open #{url}##{lines}`
+
+  if ARGV[0] == "copy"
+    `echo "#{url}##{lines}" | pbcopy`
+    puts "Added #{url}##{lines} to clipboard"
+  else
+    `open #{url}##{lines}`
+  end
 rescue NotGitRepositoryError
   puts "File/project not a git repository"
 rescue NotGitHubRepositoryError

@@ -4,6 +4,7 @@ GitHub TextMate bundle
 Contains the following commands specific to the current file:
 
 * Show in GitHub - opens the current file in github, and selects the same lines that are selected in the current file
+* Add GitHub URL to Clipboard - Gets the URL for the current file in GitHub with the current line(s) selected and adds this link to the user's clipboard
 * Annotate/Blame/Comment Line - finds the original commit where this line was created and opens that commit in GitHub, whereby you can use the GitHub comment feature
 
 Contains the following commands specific to the repository:
