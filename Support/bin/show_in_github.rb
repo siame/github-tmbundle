@@ -17,7 +17,7 @@ begin
   end
 
   if ARGV[0] == "copy"
-    `echo "#{url}##{lines}" | pbcopy`
+    `echo "#{url}##{lines}" | tr -d '\n' | pbcopy`
     puts "Added #{url}##{lines} to clipboard"
   else
     `open #{url}##{lines}`
